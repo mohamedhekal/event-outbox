@@ -1,0 +1,46 @@
+{
+    "name": "hekal/event-outbox",
+    "description": "Transactional outbox for reliable domain events in Laravel",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "outbox", "domain-events", "reliability", "messaging"],
+    "authors": [{"name": "Mohamed Hekal"}],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0|^12.0",
+        "illuminate/database": "^11.0|^12.0",
+        "illuminate/console": "^11.0|^12.0",
+        "illuminate/events": "^11.0|^12.0",
+        "illuminate/contracts": "^11.0|^12.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "laravel/pint": "^1.18",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {"Hekal\\EventOutbox\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Hekal\\EventOutbox\\Tests\\": "tests/"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["Hekal\\EventOutbox\\EventOutboxServiceProvider"],
+            "aliases": {"Outbox": "Hekal\\EventOutbox\\Facades\\Outbox"}
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "analyse": "phpstan analyse --memory-limit=512M",
+        "format": "pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {"pestphp/pest-plugin": true}
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

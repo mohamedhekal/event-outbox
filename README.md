@@ -1,0 +1,77 @@
+# Event Outbox
+
+Transactional outbox for Laravel: persist domain events in the same DB transaction as your business write, then publish them reliably with a worker.
+
+## Problem
+
+`DB::commit()` + `event()` / `Queue::push()` is a dual-write. If the process dies between them, state and events diverge. The outbox pattern makes event emission part of the transaction.
+
+## Installation
+
+```bash
+composer require hekal/event-outbox
+php artisan vendor:publish --tag=outbox-config
+php artisan migrate
+```
+
+## Usage
+
+```php
+use Hekal\EventOutbox\Facades\Outbox;
+use Illuminate\Support\Facades\DB;
+
+DB::transaction(function () use ($order) {
+    $order->save();
+
+    Outbox::record('order.created', [
+        'id' => $order->id,
+        'total' => $order->total,
+    ]);
+});
+```
+
+Schedule the publisher:
+
+```php
+// routes/console.php or Kernel
+Schedule::command('outbox:publish')->everyMinute();
+```
+
+Map types to Laravel events in `config/outbox.php`:
+
+```php
+'event_map' => [
+    'order.created' => App\Events\OrderCreated::class,
+],
+```
+
+`OrderCreated` should accept `array $payload` (and optionally `array $headers`).
+
+Every successful publish also fires `OutboxMessagePublished`.
+
+## Idempotent consumers
+
+```php
+use Hekal\EventOutbox\Support\IdempotentConsumer;
+
+app(IdempotentConsumer::class)->once($message->uuid, function () {
+    // side effects
+}, consumer: 'billing');
+```
+
+## Commands
+
+```bash
+php artisan outbox:publish --limit=100
+php artisan outbox:purge --days=14
+```
+
+## Testing
+
+```bash
+composer install && composer test
+```
+
+## License
+
+MIT
