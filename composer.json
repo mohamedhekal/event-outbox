@@ -3,8 +3,23 @@
     "description": "Transactional outbox for reliable domain events in Laravel",
     "type": "library",
     "license": "MIT",
-    "keywords": ["laravel", "outbox", "domain-events", "reliability", "messaging"],
-    "authors": [{"name": "Mohamed Hekal"}],
+    "keywords": [
+        "laravel",
+        "outbox",
+        "domain-events",
+        "reliability",
+        "messaging",
+        "php",
+        "laravel-package",
+        "transactional-outbox",
+        "events",
+        "queues"
+    ],
+    "authors": [
+        {
+            "name": "Mohamed Hekal"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "illuminate/support": "^11.0|^12.0",
@@ -21,15 +36,23 @@
         "phpstan/phpstan": "^2.0"
     },
     "autoload": {
-        "psr-4": {"Hekal\\EventOutbox\\": "src/"}
+        "psr-4": {
+            "Hekal\\EventOutbox\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": {"Hekal\\EventOutbox\\Tests\\": "tests/"}
+        "psr-4": {
+            "Hekal\\EventOutbox\\Tests\\": "tests/"
+        }
     },
     "extra": {
         "laravel": {
-            "providers": ["Hekal\\EventOutbox\\EventOutboxServiceProvider"],
-            "aliases": {"Outbox": "Hekal\\EventOutbox\\Facades\\Outbox"}
+            "providers": [
+                "Hekal\\EventOutbox\\EventOutboxServiceProvider"
+            ],
+            "aliases": {
+                "Outbox": "Hekal\\EventOutbox\\Facades\\Outbox"
+            }
         }
     },
     "scripts": {
@@ -39,8 +62,15 @@
     },
     "config": {
         "sort-packages": true,
-        "allow-plugins": {"pestphp/pest-plugin": true}
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "homepage": "https://github.com/mohamedhekal/event-outbox",
+    "support": {
+        "issues": "https://github.com/mohamedhekal/event-outbox/issues",
+        "source": "https://github.com/mohamedhekal/event-outbox"
+    }
 }
