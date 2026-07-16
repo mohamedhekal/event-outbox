@@ -2,7 +2,7 @@
 
 ## Name
 
-**event-outbox** (`hekal/event-outbox`)
+**event-outbox** (`mohamedhekal/event-outbox`)
 
 ## Vision
 

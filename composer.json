@@ -1,5 +1,5 @@
 {
-    "name": "hekal/event-outbox",
+    "name": "mohamedmohamedhekal/event-outbox",
     "description": "Transactional outbox for reliable domain events in Laravel",
     "type": "library",
     "license": "MIT",
@@ -68,9 +68,9 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "homepage": "https://github.com/mohamedhekal/event-outbox",
+    "homepage": "https://github.com/mohamedmohamedhekal/event-outbox",
     "support": {
-        "issues": "https://github.com/mohamedhekal/event-outbox/issues",
-        "source": "https://github.com/mohamedhekal/event-outbox"
+        "issues": "https://github.com/mohamedmohamedhekal/event-outbox/issues",
+        "source": "https://github.com/mohamedmohamedhekal/event-outbox"
     }
 }
